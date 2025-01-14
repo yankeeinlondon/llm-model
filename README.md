@@ -25,7 +25,9 @@ bun install -g @yankeeinlondon/llm-model
   - you can give a partial match for model name _or_ run interactively
 
     ![benchmarks](./docs/benchmarks.png)
-
 - List and Lifecycle
+  - list all local models available
+  - list any running servers
 
+    ![list](./docs/list.png)
 
