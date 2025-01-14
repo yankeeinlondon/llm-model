@@ -6,7 +6,7 @@ import type {
 } from "./types";
 import { argv } from "bun";
 import chalk from "chalk";
-import { bench, download, list, run, search, speculate, variants } from "./commands";
+import { bench, download, list, run, search, speculate, variants, stop } from "./commands";
 import { remove } from "./commands/remove";
 import { isBoolSwitch, isNumberSwitch, isStringSwitch } from "./type-guards";
 
@@ -56,6 +56,9 @@ async function main() {
     }
     else if (command === "bench") {
       await bench(args, switches);
+    }
+    else if (command === "stop") {
+      await stop(args);
     }
     else if (command === "remove") {
       await remove(args, switches);

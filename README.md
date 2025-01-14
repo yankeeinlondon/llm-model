@@ -10,24 +10,37 @@ bun install -g @yankeeinlondon/llm-model
 
 ## Features
 
-- 👓 allows easy searching of Hugging Face models from command line
+
+### Search
+
+- allows easy searching of Hugging Face models from command line
 
     ![search](./docs/search.png)
 
-- 🏃‍➡️ run singular models or dual models using _speculative sampling_.
-  - allows for interactive input or pure CLI model specification
+### Model Serving
+
+- Run singular models or use _speculative sampling_ with two models running in parallel
+- allows for interactive input or pure CLI model specification
 
     ![run](./docs/run.png)
 
-- Benchmark
-  - produces tabular format for easy comparison (JSON also available)
-  - caches results so that quick cross-model views are possible
-  - you can give a partial match for model name _or_ run interactively
+
+### Benchmarking
+
+- produces tabular format for easy comparison (JSON also available)
+- caches results so that quick cross-model views are possible
+- you can give a partial match for model name _or_ run interactively
 
     ![benchmarks](./docs/benchmarks.png)
-- List and Lifecycle
-  - list all local models available
-  - list any running servers
+
+### List and Lifecycle
+
+- List all local models available for serving
+- List any currently running servers
 
     ![list](./docs/list.png)
+
+- stop servers with a `PID`,  _friendly name reference_, or stop all with `all`
+
+    ![stop](./docs/stop.png)
 
