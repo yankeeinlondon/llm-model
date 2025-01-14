@@ -9,7 +9,8 @@
   "scripts": {
     "build": "bun build src/index.ts --target bun --outfile dist/index.js --sourcemap",
     "lint": "eslint src",
-    "watch": "bun build src/index.ts --target bun --outfile dist/index.js --sourcemap --watch"
+    "watch": "bun build src/index.ts --target bun --outfile dist/index.js --sourcemap --watch",
+    "release": "bumpp"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.14.0",
