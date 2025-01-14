@@ -1,6 +1,6 @@
 import type { Iso8601DateTime } from "inferred-types";
 
-export type Job = {
+export interface Job {
   model: string;
   draftModel?: string;
   /** memorable name */

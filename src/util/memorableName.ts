@@ -17,8 +17,8 @@ const things = [
   "peanut",
   "apple",
   "pear",
-  "grapes"
-]
+  "grapes",
+];
 
 const color = [
   "red",
@@ -26,8 +26,8 @@ const color = [
   "purple",
   "green",
   "yellow",
-  "grey"
-]
+  "grey",
+];
 
 const modifier = [
   "dancing",
@@ -36,30 +36,30 @@ const modifier = [
   "jumping",
   "laughing",
   "crying",
-  "falling"
-]
+  "falling",
+];
 
 function random<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
 }
 
 export function memorableName() {
-  const name = `${random(color)}-${random(modifier)}-${random(things)}`
+  const name = `${random(color)}-${random(modifier)}-${random(things)}`;
   return [
     name,
     name.includes("yellow")
       ? chalk.bgYellow.blackBright(name)
       : name.includes("green")
-      ? chalk.bgGreen.blackBright(name)
-      : name.includes("blue")
-      ? chalk.bgBlue.blackBright(name)
-      : name.includes("red")
-      ? chalk.bgRed.blackBright(name)
-      : name.includes("purple")
-      ? chalk.bgMagenta.blackBright(name)
-      : name.includes("grey")
-      ? chalk.bgGrey(name)
-      : name
+        ? chalk.bgGreen.blackBright(name)
+        : name.includes("blue")
+          ? chalk.bgBlue.blackBright(name)
+          : name.includes("red")
+            ? chalk.bgRed.blackBright(name)
+            : name.includes("purple")
+              ? chalk.bgMagenta.blackBright(name)
+              : name.includes("grey")
+                ? chalk.bgGrey(name)
+                : name,
   ];
 }
 
@@ -67,9 +67,9 @@ export async function getUniqueMemorableName() {
   const IN_USE = (await getRunningJobs()).map(i => i.name);
   let [name, pretty] = memorableName();
 
-  while(IN_USE.includes(name)) {
+  while (IN_USE.includes(name)) {
     [name, pretty] = memorableName();
   }
 
-  return [name, pretty]
+  return [name, pretty];
 }

@@ -6,7 +6,7 @@ import type {
 } from "./types";
 import { argv } from "bun";
 import chalk from "chalk";
-import { bench, download, list, run, search, speculate, variants, stop } from "./commands";
+import { bench, download, list, run, search, speculate, stop, variants } from "./commands";
 import { remove } from "./commands/remove";
 import { isBoolSwitch, isNumberSwitch, isStringSwitch } from "./type-guards";
 

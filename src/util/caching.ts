@@ -6,7 +6,6 @@ import { existsSync } from "node:fs";
 import { join } from "node:path";
 import chalk from "chalk";
 import { BENCH_CACHE, CONFIG_BASE_DIR, CONFIG_DIR, HOME_DIR, JOBS_CACHE, LAST_MODEL_SET, MODEL_CACHE, VARIANT_CACHE } from "../constants";
-import { hasNetworkConnection } from "./hasNetworkConnection";
 import { isPortInUse } from "./isPortInUse";
 import { getUniqueMemorableName } from "./memorableName";
 
@@ -95,41 +94,40 @@ export async function updateBenches(benches: SimplifiedBench[]) {
   return Bun.write(filepath, JSON.stringify(data));
 }
 
-
 export async function getRunningJobs() {
   const filepath = join(getFileBase(), JOBS_CACHE);
   const file = Bun.file(filepath);
-  let jobs = (
+  const jobs = (
     await file.exists()
-    ? await file.json() 
-    : [] 
+      ? await file.json()
+      : []
   ) as Job[];
 
   const active: Job[] = [];
 
   for (const job of jobs) {
     const listening = await isPortInUse(job.port);
-    if(listening) {
+    if (listening) {
       active.push(job);
     }
   }
 
   await file.write(JSON.stringify(active));
-  
+
   return active;
 }
 
 export async function addJob(
-  pid: number, 
-  port: number, 
-  model: string, 
-  draftModel?: string
+  pid: number,
+  port: number,
+  model: string,
+  draftModel?: string,
 ) {
   const filepath = join(getFileBase(), JOBS_CACHE);
   const file = Bun.file(filepath);
   const jobs = await getRunningJobs();
 
-  const [name, pretty] = await getUniqueMemorableName()
+  const [name, pretty] = await getUniqueMemorableName();
 
   const job = {
     model,
@@ -138,10 +136,10 @@ export async function addJob(
     port,
     name,
     pretty,
-    start: new Date().toISOString()
-  }
+    start: new Date().toISOString(),
+  };
 
   await file.write(JSON.stringify([...jobs, job]));
-  
+
   return job.name;
 }
