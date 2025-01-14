@@ -9,6 +9,8 @@
   "scripts": {
     "build": "bun build src/index.ts --target bun --outfile dist/index.js --sourcemap",
     "lint": "eslint src",
+    "test": "vitest",
+    "test:ci": "vitest run",
     "watch": "bun build src/index.ts --target bun --outfile dist/index.js --sourcemap --watch",
     "release": "bumpp"
   },
