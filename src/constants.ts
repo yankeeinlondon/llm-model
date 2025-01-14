@@ -11,6 +11,7 @@ export const MODEL_CACHE = ".models.json" as const;
 export const LAST_MODEL_SET = ".last-model-result.json" as const;
 export const VARIANT_CACHE = ".model-variant.json" as const;
 export const BENCH_CACHE = ".bench.json" as const;
+export const JOBS_CACHE = ".jobs.json" as const;
 export const DEFAULT_MODEL_DIR = process.env.HF_HOME || process.env.PWD || ".";
 
 // LLAMA PARAMs

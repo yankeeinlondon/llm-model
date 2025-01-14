@@ -13,3 +13,4 @@ export * from "./show";
 export * from "./tag";
 export * from "./toSimplifiedBench";
 export * from "./waitForFile";
+export * from "./memorableName";

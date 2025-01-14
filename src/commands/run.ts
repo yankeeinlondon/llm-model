@@ -9,6 +9,7 @@ import chalk from "chalk";
 import { isDefined } from "inferred-types";
 import { chooseModel } from "../questions";
 import {
+  addJob,
   bye,
   createCliParamsForModel,
   getLocalModels,
@@ -105,9 +106,11 @@ export async function run(args: string[], switches: CliSwitches) {
   // Detach the child process so it can continue independently
   server.unref();
 
-  const pid = server.pid;
+  const pid = server.pid as number;
+  const name = await addJob(pid, params["--port"], basename(model));
+
   const logFile = params["--log-file"];
-  log(`- Running with PID: ${pid}`);
+  log(`- Running with PID: ${pid}, friendly name of: ${name}`);
   log(`- Logs are being written to: ${chalk.blue(logFile)}`);
   log(
     `- we will now ${chalk.italic("tail")} the logs for you but yoo can ctrl-c to stop`,
