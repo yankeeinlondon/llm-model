@@ -21,6 +21,7 @@ jobs:
     uses: yankeeinlondon/gha/.github/workflows/npm.yml@main
     with:
       nodeVersion: 20
+      bun: true
     secrets:
       npm_token: ${{secrets.NPM_TOKEN}}
 
